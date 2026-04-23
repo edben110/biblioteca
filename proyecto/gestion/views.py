@@ -20,7 +20,7 @@ def crear_autor(request):
             return redirect('lista_autores')
     else:
         form = AutorForm()
-    return render(request, 'gestion/autor_form.html', {'form': form})
+    return render(request, 'gestion/crear_autor.html', {'form': form})
 
 def editar_autor(request, pk):
     autor = get_object_or_404(Autor, pk=pk)
@@ -31,7 +31,7 @@ def editar_autor(request, pk):
             return redirect('lista_autores')
     else:
         form = AutorForm(instance=autor)
-    return render(request, 'gestion/autor_form.html', {'form': form})
+    return render(request, 'gestion/editar_autor.html', {'form': form})
 
 # =============================================
 # CRUD Libros
