@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-# Register your models here.
+from .models import Autor, Libro
 @admin.register(Autor) 
 class AutorAdmin(admin.ModelAdmin): 
     list_display = ('nombre', 'correo', 'nacionalidad', 'fecha_nacimiento') 
