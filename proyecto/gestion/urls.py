@@ -2,6 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # Home
+    path('', views.HomeView.as_view(), name='home'),
+
     # Autores (vistas genericas como principales)
     path('autores/', views.ListaAutorGenericaView.as_view(), name='lista_autores'),
     path('autores/crear/', views.CrearAutorGenericaView.as_view(), name='crear_autor'),

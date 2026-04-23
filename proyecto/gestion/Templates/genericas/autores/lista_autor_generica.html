@@ -1,43 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Autores - Generica</title>
-</head>
-<body>
-    <h1>Lista de Autores (Vista Generica)</h1>
-    <a href="{% url 'crear_autor_generica' %}">Agregar autor</a>
+{% extends "base.html" %}
 
-    {% if autores %}
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Nacionalidad</th>
-                <th>Fecha de nacimiento</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for autor in autores %}
-            <tr>
-                <td>{{ autor.nombre }}</td>
-                <td>{{ autor.correo }}</td>
-                <td>{{ autor.nacionalidad }}</td>
-                <td>{{ autor.fecha_nacimiento }}</td>
-                <td>
-                    <a href="{% url 'editar_autor_generica' autor.pk %}">Editar</a>
-                    |
-                    <a href="{% url 'eliminar_autor_generica' autor.pk %}">Eliminar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <p>No hay autores registrados.</p>
-    {% endif %}
-</body>
-</html>
+{% block title %}Lista de Autores{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Autores</h2>
+    <a href="{% url 'crear_autor' %}" class="btn btn-success">+ Nuevo Autor</a>
+</div>
+
+{% if autores %}
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Nacionalidad</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for autor in autores %}
+                <tr>
+                    <td>{{ autor.nombre }}</td>
+                    <td>{{ autor.correo }}</td>
+                    <td>{{ autor.nacionalidad }}</td>
+                    <td>{{ autor.fecha_nacimiento }}</td>
+                    <td>
+                        <a href="{% url 'editar_autor' autor.pk %}" class="btn btn-sm btn-warning btn-action">Editar</a>
+                        <a href="{% url 'eliminar_autor' autor.pk %}" class="btn btn-sm btn-danger btn-action">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info">No hay autores registrados.</div>
+{% endif %}
+{% endblock %}
