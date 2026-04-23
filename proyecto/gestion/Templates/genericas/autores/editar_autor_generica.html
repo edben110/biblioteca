@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Autor</title>
+    <title>Editar Autor - Generica</title>
 </head>
 <body>
-    <h1>Editar Autor</h1>
+    <h1>Editar Autor (Vista Generica)</h1>
 
     <form method="post">
         {% csrf_token %}
@@ -14,10 +14,10 @@
             {{ form.as_table }}
         </table>
         <br>
-        <button type="submit">Guardar</button>
+        <button type="submit">Guardar cambios</button>
     </form>
 
     <br>
-    <a href="{% url 'lista_autores' %}">Volver a la lista</a>
+    <a href="{% url 'lista_autores_generica' %}">Volver a la lista generica</a>
 </body>
 </html>
