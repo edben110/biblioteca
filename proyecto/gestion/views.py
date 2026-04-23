@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Autor, Libro
 from .forms import AutorForm, LibroForm
@@ -22,6 +22,17 @@ def crear_autor(request):
         form = AutorForm()
     return render(request, 'gestion/autor_form.html', {'form': form})
 
+def editar_autor(request, pk):
+    autor = get_object_or_404(Autor, pk=pk)
+    if request.method == 'POST':
+        form = AutorForm(request.POST, instance=autor)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_autores')
+    else:
+        form = AutorForm(instance=autor)
+    return render(request, 'gestion/autor_form.html', {'form': form})
+
 # =============================================
 # CRUD Libros
 # =============================================
@@ -36,4 +47,11 @@ class CrearLibroView(CreateView):
     model = Libro
     form_class = LibroForm
     template_name = 'create_view.html'
+    success_url = reverse_lazy('lista_libros')
+
+# Vista genérica (clase) - Editar libro
+class EditarLibroView(UpdateView):
+    model = Libro
+    form_class = LibroForm
+    template_name = 'edit_view.html'
     success_url = reverse_lazy('lista_libros')
