@@ -1,7 +1,11 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.urls import reverse_lazy
 from .models import Autor, Libro
 from .forms import AutorForm, LibroForm
+
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
 # =============================================
 # CRUD Generico (Class-Based Views)

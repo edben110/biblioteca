@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Biblioteca{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4">📚 Sistema de Gestión de Biblioteca</h1>
+    <p class="lead text-muted">Administra autores y libros de forma sencilla</p>
+</div>
+
+<div class="row justify-content-center g-4">
+    <div class="col-md-5">
+        <div class="card h-100 text-center">
+            <div class="card-body d-flex flex-column justify-content-center py-5">
+                <h2 class="card-title mb-3">✍️ Autores</h2>
+                <p class="card-text text-muted mb-4">Gestiona los autores registrados en el sistema</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{% url 'lista_autores' %}" class="btn btn-primary btn-lg">Ver autores</a>
+                    <a href="{% url 'crear_autor' %}" class="btn btn-outline-success btn-lg">+ Crear</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card h-100 text-center">
+            <div class="card-body d-flex flex-column justify-content-center py-5">
+                <h2 class="card-title mb-3">📖 Libros</h2>
+                <p class="card-text text-muted mb-4">Gestiona los libros registrados en el sistema</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{% url 'lista_libros' %}" class="btn btn-primary btn-lg">Ver libros</a>
+                    <a href="{% url 'crear_libro' %}" class="btn btn-outline-success btn-lg">+ Crear</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
